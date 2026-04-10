@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Treasure Trove</title>
+
+   <link rel="icon" type="image/png" href="Logo.png">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    :root {
+      --bg-main: #081532;
+      --bg-footer: #020b24;
+      --text-main: #fff7ef;
+      --text-soft: #9cb0cf;
+      --line: rgba(255,255,255,0.12);
+      --blue: #2563ff;
+      --blue-hover: #3b75ff;
+      --search-bg: #152444;
+      --tag-bg: #1a2947;
+      --header-height: 96px;
+    }
+
+    body.light-mode {
+      --bg-main: #f4f7ff;
+      --bg-footer: #e6ecff;
+      --text-main: #0b1220;
+      --text-soft: #4a5a75;
+      --search-bg: #dde6ff;
+      --tag-bg: #cdd9ff;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg-main);
+      color: var(--text-main);
+    }
+
+    .container {
+      width: min(1260px, 90%);
+      margin: 0 auto;
+    }
+
+    /* HEADER */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      width: 100%;
+      min-height: var(--header-height);
+      background: var(--bg-main);
+      border-bottom: 1px solid var(--line);
+      padding: 18px 0;
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .logo {
+      font-size: 32px;
+      font-weight: 800;
+      background: linear-gradient(90deg, #63a9ff, #b14cff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      margin-left: 20px;
+      flex: 1;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: #6fa7ff;
+    }
+
+    .nav-actions {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .search-box {
+      width: 260px;
+      height: 42px;
+      background: var(--search-bg);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      padding: 0 12px;
+    }
+
+    .search-box input {
+      width: 100%;
+      border: none;
+      outline: none;
+      background: transparent;
+      color: var(--text-main);
+    }
+
+    .theme-btn {
+      width: 42px;
+      height: 42px;
+      border: none;
+      border-radius: 10px;
+      background: var(--search-bg);
+      font-size: 20px;
+      cursor: pointer;
+      color: var(--text-main);
+    }
+
+    /* HERO */
+    .hero-section {
+      min-height: calc(100vh - var(--header-height));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .hero-content h1 {
+      font-size: 56px;
+      margin-bottom: 15px;
+    }
+
+    .hero-content p {
+      color: var(--text-soft);
+      margin-bottom: 25px;
+    }
+
+    .browse-btn {
+      background: var(--blue);
+      padding: 14px 28px;
+      border-radius: 10px;
+      color: white;
+      font-weight: bold;
+    }
+
+    .browse-btn:hover {
+      background: var(--blue-hover);
+    }
+
+    /* FOOTER */
+    .site-footer {
+      background: var(--bg-footer);
+      padding: 30px 0;
+      margin-top: 60px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .footer-column h3 {
+      margin-bottom: 10px;
+    }
+
+    .footer-column a,
+    .footer-column p {
+      color: var(--text-soft);
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      margin-top: 15px;
+      border-top: 1px solid var(--line);
+      padding-top: 10px;
+      color: var(--text-soft);
+    }
+
+    /* HELP BUTTON */
+    .help-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 50px;
+      height: 50px;
+      background: var(--blue);
+      border-radius: 50%;
+      color: white;
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+    }
+
+    /* MOBILE */
+    @media (max-width: 768px) {
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-inner {
+        flex-direction: column;
+      }
+
+      .search-box {
+        width: 100%;
+      }
+
+      .hero-content h1 {
+        font-size: 36px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header class="site-header">
+  <div class="container nav-inner">
+    <a href="index.html" class="logo">Treasure Trove</a>
+
+    <nav class="nav-links">
+      <a href="index.html" class="active">Home</a>
+      <a href="games.html">Games</a>
+      <a href="https://www.facebook.com/share/g/18SvNHCSTW/" target="_blank" rel="noopener noreferrer">Facebook Group</a>
+      <a href="seller-profile.html">Seller's Profile</a>
+    </nav>
+
+    <div class="nav-actions">
+      <div class="search-box">
+        <input type="text" placeholder="Search games..." />
+      </div>
+      <button class="theme-btn" onclick="toggleTheme()">☼</button>
+    </div>
+  </div>
+</header>
+
+<main class="hero-section">
+  <div class="hero-content">
+    <h1>Welcome to Treasure Trove</h1>
+    <p>Your trusted marketplace for gaming currency and accounts</p>
+    <a href="games.html" class="browse-btn">Browse Games</a>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-column">
+      <h3>About</h3>
+      <p>Trusted marketplace since 2015</p>
+    </div>
+
+    <div class="footer-column">
+      <h3>Payment</h3>
+      <p>GCash</p>
+      <p>Binance</p>
+    </div>
+
+    <div class="footer-column">
+      <h3>Legal</h3>
+      <a href="#" onclick="alert('Terms coming soon')">Terms</a>
+      <a href="#" onclick="alert('Privacy coming soon')">Privacy</a>
+    </div>
+
+    <div class="footer-column">
+      <h3>Store</h3>
+      <a href="https://www.facebook.com/kaeydi" target="_blank" rel="noopener noreferrer">Facebook</a>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    © 2026 Kaeyd
+  </div>
+</footer>
+
+<div class="help-btn" onclick="openHelp()">?</div>
+
+<script>
+  function toggleTheme() {
+    document.body.classList.toggle("light-mode");
+  }
+
+  function openHelp() {
+    alert("How to order coming soon...");
+  }
+</script>
+
+</body>
+</html>
