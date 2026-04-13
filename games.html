@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Treasure Trove - Games</title>
 
-  <!-- Tab logo / favicon -->
   <link rel="icon" type="image/png" href="Logo.png">
 
   <style>
@@ -13,7 +13,7 @@
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+      transition: background-color 0.3s ease, color 0.3s ease;
     }
 
     a {
@@ -24,27 +24,13 @@
     :root {
       --bg-main: #081532;
       --bg-footer: #020b24;
-      --card-bg: #1a2947;
-      --card-hover: #22365c;
       --text-main: #fff7ef;
       --text-soft: #9cb0cf;
-      --line: rgba(255,255,255,0.12);
+      --line: rgba(255, 255, 255, 0.12);
       --blue: #2563ff;
       --blue-hover: #3b75ff;
       --search-bg: #152444;
-      --tag-bg: #1a2947;
       --header-height: 96px;
-    }
-
-    body.light-mode {
-      --bg-main: #f4f7ff;
-      --bg-footer: #e6ecff;
-      --card-bg: #dfe7ff;
-      --card-hover: #d1dcff;
-      --text-main: #0b1220;
-      --text-soft: #4a5a75;
-      --search-bg: #dde6ff;
-      --tag-bg: #cdd9ff;
     }
 
     body {
@@ -58,7 +44,7 @@
       margin: 0 auto;
     }
 
-    /* HEADER */
+    /* HEADER (FROM INDEX EXACT) */
     .site-header {
       position: sticky;
       top: 0;
@@ -84,7 +70,6 @@
       background: linear-gradient(90deg, #63a9ff, #b14cff);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      white-space: nowrap;
     }
 
     .nav-links {
@@ -105,29 +90,6 @@
       align-items: center;
     }
 
-    .search-box {
-      width: 260px;
-      height: 42px;
-      background: var(--search-bg);
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      padding: 0 12px;
-    }
-
-    .search-box input {
-      width: 100%;
-      border: none;
-      outline: none;
-      background: transparent;
-      color: var(--text-main);
-      font-size: 14px;
-    }
-
-    .search-box input::placeholder {
-      color: var(--text-soft);
-    }
-
     .theme-btn {
       width: 42px;
       height: 42px;
@@ -141,19 +103,19 @@
 
     /* PAGE */
     .games-page {
-      min-height: calc(100vh - var(--header-height) - 220px);
-      padding: 40px 0 100px;
+      padding: 48px 0 180px; /* ONLY CHANGE */
     }
 
     .page-title {
       font-size: 56px;
-      margin-bottom: 10px;
+      font-weight: 800;
+      margin-bottom: 12px;
     }
 
     .page-subtitle {
       color: var(--text-soft);
-      margin-bottom: 30px;
       font-size: 18px;
+      margin-bottom: 34px;
     }
 
     /* GRID */
@@ -164,42 +126,45 @@
     }
 
     .game-card {
-      background: var(--card-bg);
+      background: #1b2d59;
       border-radius: 14px;
-      padding: 28px 20px;
+      min-height: 160px;
+      padding: 26px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       text-align: center;
       cursor: pointer;
-      display: block;
-      min-height: 138px;
     }
 
     .game-card:hover {
-      background: var(--card-hover);
+      background: #22376b;
       transform: translateY(-4px);
     }
 
     .game-icon {
       font-size: 50px;
-      margin-bottom: 16px;
-      display: block;
+      margin-bottom: 22px;
     }
 
     .game-card h3 {
       font-size: 18px;
-      line-height: 1.35;
-    }
-
-    .game-card.soon {
-      opacity: 0.8;
+      font-weight: 700;
     }
 
     .game-card.more {
-      border: 2px dashed var(--line);
       background: transparent;
+      border: 2px dashed var(--line);
       cursor: default;
     }
 
-    /* FOOTER - SAME STYLE AS INDEX */
+    .game-card.more:hover {
+      transform: none;
+      background: transparent;
+    }
+
+    /* FOOTER */
     .site-footer {
       background: var(--bg-footer);
       padding: 30px 0;
@@ -221,7 +186,6 @@
       color: var(--text-soft);
       display: block;
       margin-bottom: 5px;
-      line-height: 1.6;
     }
 
     .footer-bottom {
@@ -232,103 +196,18 @@
       color: var(--text-soft);
     }
 
-    /* HELP BUTTON */
-    .help-btn {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      width: 50px;
-      height: 50px;
-      background: var(--blue);
-      border-radius: 50%;
-      color: white;
-      display: grid;
-      place-items: center;
-      cursor: pointer;
-      z-index: 1000;
-      border: none;
-      font-size: 22px;
-    }
-
-    /* RESPONSIVE */
-    @media (max-width: 1100px) {
-      .games-grid {
-        grid-template-columns: repeat(3, 1fr);
-      }
-    }
-
+    /* MOBILE */
     @media (max-width: 768px) {
-      :root {
-        --header-height: 84px;
-      }
-
       .nav-inner {
         flex-direction: column;
-        align-items: stretch;
-      }
-
-      .nav-links {
-        justify-content: center;
-        margin-left: 0;
-        flex-wrap: wrap;
-      }
-
-      .nav-actions {
-        justify-content: center;
-      }
-
-      .search-box {
-        width: 100%;
-        max-width: 420px;
-      }
-
-      .games-page {
-        min-height: auto;
-        padding: 40px 0 70px;
-      }
-
-      .page-title {
-        font-size: 40px;
-      }
-
-      .page-subtitle {
-        font-size: 16px;
       }
 
       .games-grid {
         grid-template-columns: repeat(2, 1fr);
-        gap: 16px;
-      }
-
-      .footer-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .container {
-        width: 92%;
-      }
-
-      .logo {
-        font-size: 24px;
       }
 
       .page-title {
-        font-size: 34px;
-      }
-
-      .game-card {
-        padding: 20px 14px;
-        min-height: 120px;
-      }
-
-      .game-icon {
-        font-size: 40px;
-      }
-
-      .game-card h3 {
-        font-size: 15px;
+        font-size: 36px;
       }
     }
   </style>
@@ -336,132 +215,112 @@
 
 <body>
 
-<header class="site-header">
-  <div class="container nav-inner">
-    <a href="index.html" class="logo">Treasure Trove</a>
+  <header class="site-header">
+    <div class="container nav-inner">
+      <a href="index.html" class="logo">Treasure Trove</a>
 
-    <nav class="nav-links">
-      <a href="index.html">Home</a>
-      <a href="games.html" class="active">Games</a>
-      <a href="https://www.facebook.com/share/g/18SvNHCSTW/" target="_blank" rel="noopener noreferrer">Facebook Group</a>
-      <a href="https://www.facebook.com/kaeydi" target="_blank" rel="noopener noreferrer">Seller's Profile</a>
-    </nav>
+      <nav class="nav-links">
+        <a href="index.html" >Home</a>
+        <a href="games.html" class="active">Games</a>
+        <a href="https://www.facebook.com/share/g/18SvNHCSTW/" target="_blank">Facebook Group</a>
+        <a href="seller-profile.html">Seller's Profile</a>
+      </nav>
 
-    <div class="nav-actions">
-      <div class="search-box">
-        <input type="text" placeholder="Search games..." id="searchInput" />
+      <div class="nav-actions">
+        <button class="theme-btn" onclick="toggleTheme()">☼</button>
       </div>
-      <button class="theme-btn" onclick="toggleTheme()">☼</button>
     </div>
-  </div>
-</header>
+  </header>
 
-<main class="games-page">
-  <div class="container">
-    <h1 class="page-title">All Games</h1>
-    <p class="page-subtitle">Select a game to browse items and currency</p>
+  <main class="games-page">
+    <div class="container">
+      <h1 class="page-title">All Games</h1>
+      <p class="page-subtitle">Select a game to browse items and currency</p>
 
-    <section class="games-grid">
-      <div class="game-card soon" onclick="comingSoon()">
-        <span class="game-icon">🏰</span>
-        <h3>Garden Tower Defense</h3>
+      <section class="games-grid">
+        <div class="game-card soon" onclick="comingSoon()">
+          <span class="game-icon">🏰</span>
+          <h3>Garden Tower Defense</h3>
+        </div>
+
+        <a href="sailor-piece.html" class="game-card">
+          <span class="game-icon">⛵</span>
+          <h3>Sailor Piece</h3>
+        </a>
+
+        <div class="game-card soon" onclick="comingSoon()">
+          <span class="game-icon">🐾</span>
+          <h3>Adopt Me</h3>
+        </div>
+
+        <div class="game-card soon" onclick="comingSoon()">
+          <span class="game-icon">🧠</span>
+          <h3>Steal A Brainrot</h3>
+        </div>
+
+        <div class="game-card soon" onclick="comingSoon()">
+          <span class="game-icon">🔪</span>
+          <h3>Murder Mystery 2</h3>
+        </div>
+
+        <div class="game-card soon" onclick="comingSoon()">
+          <span class="game-icon">🌻</span>
+          <h3>Plants Vs Brainrot</h3>
+        </div>
+
+        <div class="game-card soon" onclick="comingSoon()">
+          <span class="game-icon">⚔️</span>
+          <h3>Blade Ball</h3>
+        </div>
+
+        <div class="game-card more">
+          <span class="game-icon">➕</span>
+          <h3>More Games Coming Soon</h3>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-column">
+        <h3>About</h3>
+        <p>Trusted marketplace since 2015</p>
       </div>
 
-      <a href="sailor-piece.html" class="game-card">
-        <span class="game-icon">⛵</span>
-        <h3>Sailor Piece</h3>
-      </a>
-
-      <div class="game-card soon" onclick="comingSoon()">
-        <span class="game-icon">🐾</span>
-        <h3>Adopt Me</h3>
+      <div class="footer-column">
+        <h3>Payment</h3>
+        <p>GCash</p>
+        <p>Binance</p>
       </div>
 
-      <div class="game-card soon" onclick="comingSoon()">
-        <span class="game-icon">🧠</span>
-        <h3>Steal A Brainrot</h3>
+      <div class="footer-column">
+        <h3>Legal</h3>
+        <a href="#">Terms</a>
+        <a href="#">Privacy</a>
       </div>
 
-      <div class="game-card soon" onclick="comingSoon()">
-        <span class="game-icon">🔪</span>
-        <h3>Murder Mystery 2</h3>
+      <div class="footer-column">
+        <h3>Store</h3>
+        <a href="https://www.facebook.com/kaeydi" target="_blank">Facebook</a>
       </div>
-
-      <div class="game-card soon" onclick="comingSoon()">
-        <span class="game-icon">🌻</span>
-        <h3>Plants Vs Brainrot</h3>
-      </div>
-
-      <div class="game-card soon" onclick="comingSoon()">
-        <span class="game-icon">⚔️</span>
-        <h3>Blade Ball</h3>
-      </div>
-
-      <div class="game-card more">
-        <span class="game-icon">➕</span>
-        <h3>More Games Coming Soon</h3>
-      </div>
-    </section>
-  </div>
-</main>
-
-<footer class="site-footer">
-  <div class="container footer-grid">
-    <div class="footer-column">
-      <h3>About</h3>
-      <p>Your Trusted marketplace since 2025.</p>
     </div>
 
-    <div class="footer-column">
-      <h3>Payment</h3>
-      <p>GCash</p>
-      <p>Binance</p>
+    <div class="footer-bottom">
+      © 2026 Kaeyd
     </div>
+  </footer>
 
-    <div class="footer-column">
-      <h3>Legal</h3>
-      <a href="#" onclick="alert('Terms coming soon')">Terms</a>
-      <a href="#" onclick="alert('Privacy coming soon')">Privacy</a>
-    </div>
+  <script>
+    function toggleTheme() {
+      document.body.classList.toggle("light-mode");
+    }
 
-    <div class="footer-column">
-      <h3>Store</h3>
-      <a href="https://www.facebook.com/kaeydi" target="_blank" rel="noopener noreferrer">Facebook</a>
-    </div>
-  </div>
-
-  <div class="footer-bottom">
-    © 2026 Kaeyd
-  </div>
-</footer>
-
-<button class="help-btn" onclick="openHelp()">?</button>
-
-<script>
-  function toggleTheme() {
-    document.body.classList.toggle("light-mode");
-  }
-
-  function comingSoon() {
-    alert("This game will be available soon. Stay tuned!");
-  }
-
-  function openHelp() {
-    alert("How to order coming soon...");
-  }
-
-  const searchInput = document.getElementById("searchInput");
-  const cards = document.querySelectorAll(".game-card");
-
-  searchInput.addEventListener("input", function () {
-    const value = this.value.toLowerCase();
-
-    cards.forEach(card => {
-      const text = card.innerText.toLowerCase();
-      card.style.display = text.includes(value) ? "block" : "none";
-    });
-  });
-</script>
+    function comingSoon() {
+      alert("This game will be available soon.");
+    }
+  </script>
 
 </body>
+
 </html>
